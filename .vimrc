@@ -9,8 +9,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'dracula/vim',{'name':'dracula'}
-" The following are examples of different formats supported.
+" Plugin 'dracula/vim',{'name':'dracula'}
+Plugin 'valloric/youcompleteme'
+Plugin 'vimwiki'
+" The following are examples of different formats supported."
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
 
@@ -34,9 +36,14 @@ set tabstop=2
 set softtabstop=2
 set hlsearch
 syntax enable
+set wrap linebreak
 set backspace=indent,eol,start
 " Allow system clipboard
 set clipboard=unnamed
-
+let g:vimwiki_url_maxsave=0
 set foldmethod=indent
 set foldlevelstart=99
+set shiftwidth=2
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[5 q"
+let &t_EI = "\<esc>[2 q"
