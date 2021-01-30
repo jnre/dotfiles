@@ -81,9 +81,10 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( git npm colorize docker docker-compose thefuck z vi-mode )
+plugins=( git npm colorize docker docker-compose z vi-mode zsh-syntax-highlighting zsh-autosuggestions )
 
 ZSH_DISABLE_COMPFIX=true
+DISABLE_AUTO_UPDATE="true"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,9 +116,6 @@ source $ZSH/oh-my-zsh.sh
 alias bypass='docker start proxy || docker run -p 127.0.0.1:1999:1999 -d --name proxy iamjuush/stunnel:1.0'
 alias socks='open ~/Applications/Personal/bypass.app'
 #if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-#source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias lg='lazygit'
