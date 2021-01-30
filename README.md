@@ -8,4 +8,6 @@ yadm commit
   
 yadm remote add origin <url>
 yadm push -u origin master
+
+yadm rm -r --cached <file>
 ```
