@@ -1,0 +1,42 @@
+#!/bin/bash
+
+system_type=$(uname -s)
+if [[ "$system_type" = "Linux" ]]; then
+  echo "Install zsh apt-pkg"
+  sudo apt update -y
+  sudo add-apt-repository ppa:lazygit-team/release -y
+  sudo apt install -qq zsh wget git python3 python3-pip python3-setuptools mono-complete golang nodejs default-jdk npm lazygit tmux git-flow nodejs -y
+  sudo apt install -qq build-essential cmake vim-nox python3-dev -y 
+  echo "WARNING: You must manuall run 'sudo chsh -s /bin/zsh'!"
+  sudo chsh -s /bin/zsh
+  echo "Check: Shell is now $SHELL"
+  echo "Install oh-my-zsh"
+  if [ ! -d ~/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  fi
+  echo "Pulling zsh-autosuggestions"
+  if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then 
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  fi  
+  echo "Pulling zsh-syntax-highlighting"
+  if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  fi  
+  echo "install powerlevel10k"
+  if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k ]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  fi
+  echo "Install dependency for vim-instant-markdown"
+  sudo npm -g install instant-markdown-d
+  echo "Install vim plug if missing"
+  if [ ! -d "~/.vim/autoload/plug.vim" ]; then 
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    echo "Bootstraping Vim"
+    vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+  fi
+  
+  echo " completed! reopen your terminal"
+
+
+fi
