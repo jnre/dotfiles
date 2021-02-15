@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'vimwiki/vimwiki'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
+Plug 'mzlogin/vim-markdown-toc'
 call plug#end()
 
 set number
@@ -15,6 +16,8 @@ set hlsearch
 syntax enable
 set wrap linebreak
 set backspace=indent,eol,start
+set wildmenu
+set wildmode=longest,list,full
 
 " Allow system clipboard
 set clipboard=unnamed
